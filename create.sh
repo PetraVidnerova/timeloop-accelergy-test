@@ -12,4 +12,7 @@ for STRIDE in 1 2 4
 do
     OUT=`python preved.py $IN $FILTER $STRIDE`
     echo $OUT
+    cp layer_stride.yaml stride_layer_$STRIDE.yaml
+    eval sed -i 's/XXX/$STRIDE/g' stride_layer_$STRIDE.yaml 
+    eval sed -i 's/YYY/$OUT/g' stride_layer_$STRIDE.yaml
 done
